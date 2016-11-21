@@ -16,10 +16,14 @@ export class HeroFormComponent{
     model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
 
     sumitted = false;
+    active = true;
 
     onSubmit(){
         this.sumitted = true;
     }
 
-    get diagnostric(){return JSON.stringify(this.model);}
+    newHero(){
+        this.model = new Hero(42, '', '', '');
+        this.active = false;
+    }
 }
