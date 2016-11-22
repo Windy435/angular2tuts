@@ -19,7 +19,8 @@ bin-release/
 # information for Eclipse / Flash Builder.
 
 system-config.js*
-app/**/*.js
-app/**/*.map
+**/app/**/*.js
+**/app/**/*.map
 node_modules/
 .idead/
+.vscode/
