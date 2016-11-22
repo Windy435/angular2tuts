@@ -22,5 +22,5 @@ system-config.js*
 **/app/**/*.js
 **/app/**/*.map
 node_modules/
-.idead/
+.idea/
 .vscode/
