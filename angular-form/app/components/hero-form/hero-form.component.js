@@ -24,8 +24,10 @@ var HeroFormComponent = (function () {
         this.sumitted = true;
     };
     HeroFormComponent.prototype.newHero = function () {
+        var _this = this;
         this.model = new hero_1.Hero(42, '', '', '');
         this.active = false;
+        setTimeout(function () { return _this.active = true; }, 20);
     };
     HeroFormComponent = __decorate([
         core_1.Component({

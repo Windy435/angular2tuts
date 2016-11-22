@@ -25,5 +25,6 @@ export class HeroFormComponent{
     newHero(){
         this.model = new Hero(42, '', '', '');
         this.active = false;
+        setTimeout(()=>this.active = true, 20)
     }
 }
