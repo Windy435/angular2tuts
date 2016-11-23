@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+import {Observable} from 'rxjs/Observable';
 
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import {Hero} from './hero';
+import {HeroService} from './hero.service';
 
 @Component({
     selector: 'my-heroes',
     template: `
         <h2>My Heroes</h2>
         <ul class="heroes">
-            <li *ngFor="let hero of heroes | async" [class.selected]="hero === selectedHero" (click) = "onSelect(hero)">
+            <li *ngFor="let hero of heroes | async" [class.selected]="isSelected(hero)" (click) = "onSelect(hero)">
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
-        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
         `,
     styles: [`
         .selected {
@@ -68,16 +69,26 @@ import { HeroService } from './hero.service';
 
 export class HeroListComponent implements OnInit {
     ngOnInit(): void {
-        this.getHeroes();
+        this.heroes = this.route.params
+            .switchMap((params: Params)=>{
+                this.selectedId = +params['id'];
+                return this.service.getHeroes();
+            });
     }
-    heroes: Hero[];
-    selectedHero: Hero;
 
-    constructor(private router: Router, private heroService: HeroService) { }
-    onSelect(hero: Hero): void {
-        this.router.navigate(['/hero', hero.id]);
+    heroes: Observable<Hero[]>;
+    private selectedId: number;
+
+    constructor(private router: Router,
+                private service: HeroService,
+                private route: ActivatedRoute) {
     }
-    getHeroes(): void {
-        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+
+    onSelect(hero: Hero): void {
+        this.router.navigate(['/heroes', hero.id]);
+    }
+
+    isSelected(hero: Hero){
+        return hero.id === this.selectedId;
     }
 }
