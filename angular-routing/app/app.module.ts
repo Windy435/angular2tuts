@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import {HeroesModule} from './heroes/heroes.module';
-
-import { CrisisListComponent } from './crisis-list.component';
+import {CrisisCenterModule} from './crisis-center/crisis-center.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HeroesModule, AppRoutingModule],
-    declarations: [AppComponent, CrisisListComponent],
+    imports: [BrowserModule, FormsModule, HeroesModule, CrisisCenterModule, AppRoutingModule],
+    declarations: [AppComponent],
     bootstrap: [AppComponent],
 })
 
