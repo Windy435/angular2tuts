@@ -1,0 +1,6 @@
+5. Evolving Classification
+Module Evolving Classification gồm 2 modue con:
+    - Creation of the Evolving Fuzzy Rules
+    - Web News Classification
+Như trong hình 1, các fuzzy rules được tạo bởi các dữ liệu được cung cấp từ term module.
+Sự khởi tạo và cập nhật các fuzzy rule dựa trên eClassO classifier. eClass là fuzzy rule-based (FRB) classifier
