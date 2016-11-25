@@ -1,0 +1,51 @@
+5. Evolving Classification
+Module Evolving Classification gồm 2 modue con:
+    - Creation of the Evolving Fuzzy Rules
+    - Web News Classification
+Như trong hình 1, các fuzzy rules được tạo bởi các dữ liệu được cung cấp từ term module.
+Sự khởi tạo và cập nhật các fuzzy rule dựa trên eClassO classifier. eClass là fuzzy rule-based (FRB) classifier sử dụng
+các (fuzzy) rule được phát triển từ các dòng dữ liệu. Fuzzy rule sẽ tuân theo cấu trúc sau:
+
+Rulei = IF(A1 ∼ Prot1) AND . . . AND(An ∼ Protn)
+THEN Category = Categoryj
+
+Với: i là số thứ tự của luật; n là số các giá trị input (các từ trong dữ liệu); Ai lưu giá trị tf-idf của mỗi từ i của
+bài viết (A) dể phân loại, và Proti lưu các chỉ số tf-idf ò mỗi từ i của một trong các prototype (cluser center) hoặc của
+các chủ đề tương ứng (Category). Categotym thuộc {tập các catergori khác nhau}
+5.1 Creation of the Evolving Fuzzy Rules:
+  Module này chịu trách nhiệm cho việc cập nhật số các luật và các thuộc tính của nó phụ thuộc vào các đoạn văn bản của các bài viết thu được.
+  Trong phương pháp này, khi một bài viết được thu thập và xử lý, các chỉ số tf-idf (tương ứng với mỗi từ, cụm từ) sẽ được gửi
+  đến Creation of the Evolving Fuzzy Rules module.
+Một prototype là một mẫu dữ liệu được tạo bởi các nhóm dữ liệu tương tự nhau mà mang tính đại diện cho một lớp. Một lớp được tạo bởi một mẫu dữ liệu và
+được lưu như là một luật mới. Dựa trên giá trị potential của mẫu dữ liệu mà chúng trở thành một prototype, nó có thể là một prototype mới hoặc thay thế cho
+ một protoype đã tồn tại.
+ Nếu gọi một bài viết mới là Ak (article) và chủ đề của nó là Ck (category), thì một fuzzy rule được cập nhật (hoặc tạo mới) được thực hiện theo 4 bước:
+  1) Calculate the potential of Ak.
+  2) Update all the prototypes considering.
+  3) Insert Ak as a new prototype (of the Category Cm) if needed.
+  4) Remove existing prototypes if needed.
+5.1.1. Calculate the potential of Ak
+  Giá trị potential (P) của một bài báo thứ k (Ak) có thể được tính toán bởi công thức (1), thể hiện một hàm số của tổng các khoảng cách của một bài báo k với tất cả
+  các bài báo k - 1 trong không gian dữ liệu. Kết quả của hàm này thể hiện một tỉ trọng của dữ liệu bao quanh một bài viết nào đó.
+  Trong công thức (1), distance thể hiện khoảng cách giữa 2 bài báo trong không gian dữ liệu. Mặc dù khoảng cách khác nhau có thể đươc dùng để đo lường sự tương đồng của
+  2 bài báo cosine khoảng cách (2) bởi vì nó chứa các mẫu khác nhau để có số lượng khác nhau giữa các thuộc tính (trong trường hợp này, hai bài viết có thể có số từ khác nhau khi dữ liệu được cập nhật liên tục)
+  Trong công thức (2), Ak và An thể hiện cho 2 bài báo khác nhau để tính khoảng cách giữa chúng và n thể hiện cho số các thuộc tính khác nhau giữa 2 mẫu.
+  Tuy nhiên nếu sử dụng phương trình (1), chúng ta sẽ cần lưu trữ tất cả các bài báo và điều này mẫu thuẫn với các yêu cầu về thời gian thực và các ứng dụng online đã được giới thiệu trong mô tả của nghiên cứu.
+  Vì lý do này, chúng ta sử sụng một biểu thức đệ quy như sau để tính toán giá trị potential (3).
+  Ak là bài biết thứ k và nó được gán nhã là (z = [A, Category]). Sử dụng biểu thức này, và đây là mộ trong các khái niệm quan trọng của bộ phân loại, nó chỉ cần tính toán giá trị (n + 1) với n là số các từ khác nhau của dữ liệu;
+  giá trị này được thể hiện bởi b, với conong thức ... là giá trị lũy thừa của bài viết thứ k.
+ 5.1.2. Update all the prototypes considering
+  Tỷ trọng của đữ liệu bao quanh một prototype sẽ thay đổi khi có một bài viết mới được thêm vào hoặc cập nhật một bài viết, và các prototype đã tồn tại cần được cập nhật.
+  Sự cập nhật này sẽ được diễn ra nhanh chóng khi phương trình (3) được sử dụng.
+ 5.1.3. Insert Ak as a new prototype (of the the Categoty Cm) if needed
+  Tại bước này, giá trị potential của Ak sẽ được so sánh với potential của tất cả các prototype đã tồn tại. Một prototype mới sẽ được tạo ra nếu giá trị của nó cao hơn tất cả các giá trị
+  của các prototype đã tồn tại, được thể hiện tại công thức 4.
+ 5.1.4. Remove existing prototypes if needed:
+Sau khi thêm mới một prototype, chúng ta sẽ kiểm tra xem liệu có tồn tại một prototype nào được miêu tả tốt hơn (well) bởi một prototype mới được thêm vào.
+Có nghĩa chúng ta sẽ chọn prototype có giá trị của hàm thành viên gần với nghĩa sát của prototype (5)
+Hàm thành viên tính toán khoảng cách giữa các mẫu dữ liệu (data sample) với prototype của nó được tính bởi công thức (6)
+với cosDist(Ak, Proti) là khoảng cách cosin giữa Ak và prototype thứ i...
+5.2 Web News Classification
+  Module này phân loại các bài báo mới vào trong các phân tích trước đây. Từ khi một chủ đề được đại diện bởi một hoặc nhiều prototype, Az được so sánh với tất cả các prototype bằng cách sử dụng khoảng cách cosin và khoảng cách nhỏ nhất
+  quyết định sự tương đồng nhất. Khía cạnh này được thể hiện trong phương trình (8).
+  Với Az thể hiện bài viết chưa được phân loại, NumProt là số các prototype đã tồn tại, Proti là prototype thứ i, và cosDist là khoảng cách cosin của giữa 2 bài báo.
