@@ -1,0 +1,13 @@
+<ul class="discounts">
+  <li *ngFor="let discount of listDiscount">
+    <span>{{discount.title | uppercase}}</span>
+    <br>
+    <span>{{discount.summary}}</span>
+    <br>
+    <ul>
+      <li *ngFor="let str of discount.content">
+        <span>{{str}}</span><br>
+      </li>
+    </ul>
+  </li>
+</ul>
