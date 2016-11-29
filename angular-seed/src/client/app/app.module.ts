@@ -10,10 +10,9 @@ import {HomeModule} from './home/home.module';
 import {SharedModule} from './shared/shared.module';
 import {RequestModule} from "./request/request.module";
 import {DiscountModule} from "./discount/discount.module";
-import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, RequestModule, DiscountModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, RequestModule, DiscountModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

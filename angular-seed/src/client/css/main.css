@@ -61,3 +61,16 @@ button {
 button:hover {
   background-color: #28739e;
 }
+
+.pull-right {
+  float: right;
+  margin-top: 10px;
+}
+
+.mr{
+  margin-right: 10px;
+}
+
+.btn-default{
+  background-color: #f1fdff;
+}

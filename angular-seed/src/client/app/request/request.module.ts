@@ -3,12 +3,15 @@
  */
 import { NgModule } from '@angular/core';
 
-import {RequestComponent} from "./request.component";
+import {RequestHomeComponent} from "./request-home.component";
+import {RequestListComponent} from "./request-list.component";
+import {RequestAddComponent} from "./request-add.component";
+
 import {RequestRoutingModule} from "./request-routing.model";
 
 @NgModule({
     imports: [RequestRoutingModule],
-    declarations: [RequestComponent],
-    providers: [],
+    declarations: [RequestHomeComponent, RequestListComponent, RequestAddComponent],
+    providers: []
 })
 export class RequestModule { }
