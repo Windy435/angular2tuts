@@ -2,6 +2,8 @@
  * Created by phong.tran.nam on 29/11/2016.
  */
 import { Component, OnInit } from '@angular/core';
+import {RequestService} from "./request.service";
+import {Request} from "./request";
 
 @Component({
     moduleId: module.id,
@@ -9,7 +11,15 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'request-list.component.html'
 })
 export class RequestListComponent implements OnInit {
-    constructor() { }
+    constructor(private requestService: RequestService) { }
 
-    ngOnInit() { }
+    requests: Request[];
+
+    getRequests():void{
+      this.requestService.getRequests().then(requests => this.requests = requests);
+    }
+
+    ngOnInit() {
+      this.getRequests();
+    }
 }

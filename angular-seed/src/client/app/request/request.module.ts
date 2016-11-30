@@ -8,10 +8,12 @@ import {RequestListComponent} from "./request-list.component";
 import {RequestAddComponent} from "./request-add.component";
 
 import {RequestRoutingModule} from "./request-routing.model";
+import {RequestService} from "./request.service";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
-    imports: [RequestRoutingModule],
+    imports: [RequestRoutingModule, CommonModule],
     declarations: [RequestHomeComponent, RequestListComponent, RequestAddComponent],
-    providers: []
+    providers: [RequestService]
 })
 export class RequestModule { }

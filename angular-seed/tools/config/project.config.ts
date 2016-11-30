@@ -50,7 +50,7 @@ export class ProjectConfig extends SeedConfig {
     //
     // additionalPackages.push({
     //   name: 'lodash',
-    //   path: `${this.APP_BASE}node_modules/lodash/lodash.js`,
+    //   path: `${tcdhis.APP_BASE}node_modules/lodash/lodash.js`,
     //   packageMeta: {
     //     main: 'index.js',
     //     defaultExtension: 'js'

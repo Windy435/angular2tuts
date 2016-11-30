@@ -3,37 +3,46 @@
   <form class="col s6">
     <div class="row">
       <div class="input-field col s12">
-        <input id="room_no" type="text" class="validate" required>
+        <input id="room_no" type="text" class="validate" required #roomNo>
         <label for="room_no">Room No.</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="guest_name" type="text" class="validate" required>
+        <input id="guest_name" type="text" class="validate" required #guestName>
         <label for="guest_name">Guest name</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="request" type="text" class="validate" required>
-        <label for="request">Request</label>
+        <input id="request_type" type="text" class="validate" required #requestType>
+        <label for="request_type">Request type</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <label>Request time</label>
+        <div class="row input-field">
+          <input id="request_date" type="date" class="validate col l6" required #requestDate>
+          <input id="request_time" type="time" class="validate col l6" required #requestTime>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="department" type="text" class="validate" required>
+        <input id="department" type="text" class="validate" required #department>
         <label for="department">Department</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="description" class="materialize-textarea" required></textarea>
+        <textarea id="description" class="materialize-textarea" required #description></textarea>
         <label for="description">Description</label>
       </div>
     </div>
     <div class="input-field pull-right mr">
-      <button type="button" class="waves-effect waves-light btn btn-default grey-text">Discard</button>
-      <button type="submit" class="waves-effect waves-light green btn">Submit</button>
+      <button type="button" class="waves-effect waves-light btn btn-default grey-text" (click)="goBack()">Discard</button>
+      <button type="submit" class="waves-effect waves-light green btn" (click)="addRequest(roomNo, guestName, requestType, requestDate, requestTime)">Submit</button>
     </div>
   </form>
   <div class="col s3"></div>

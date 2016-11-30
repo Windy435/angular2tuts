@@ -9,10 +9,9 @@ import {AboutModule} from './about/about.module';
 import {HomeModule} from './home/home.module';
 import {SharedModule} from './shared/shared.module';
 import {RequestModule} from "./request/request.module";
-import {DiscountModule} from "./discount/discount.module";
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, RequestModule, DiscountModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, RequestModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

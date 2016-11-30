@@ -1,28 +1,20 @@
 <table>
   <thead>
-  <tr>
-    <th data-field="no">Room No.</th>
-    <th data-field="name">Guest name</th>
-    <th data-field="request">Request</th>
-    <th data-field="department">Department</th>
-    <th data-field="description">Description</th>
-  </tr>
+    <tr>
+      <th data-field="no">Room No.</th>
+      <th data-field="name">Guest name</th>
+      <th data-field="request">Request</th>
+      <th data-field="department">Department</th>
+      <th data-field="description">Description</th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Alvin</td>
-    <td>Eclair</td>
-    <td>$0.87</td>
-  </tr>
-  <tr>
-    <td>Alan</td>
-    <td>Jellybean</td>
-    <td>$3.76</td>
-  </tr>
-  <tr>
-    <td>Jonathan</td>
-    <td>Lollipop</td>
-    <td>$7.00</td>
-  </tr>
+    <tr *ngFor="let request of requests">
+      <td>{{request.roomNo}}</td>
+      <td>{{request.guestName}}</td>
+      <td><span class="request-type">{{request.requestType}}</span> at {{request.requestTime}}</td>
+      <td>{{request.department}}</td>
+      <td>{{request.description}}</td>
+    </tr>
   </tbody>
 </table>
