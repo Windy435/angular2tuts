@@ -31,6 +31,8 @@ export class RequestAddComponent implements OnInit {
              department: string,
              description: string): void {
 
+    console.log("Click add");
+
     if(!roomNo || !guestName || !requestType ||
         !requestDate || !requestTime || !department || !description){return;}
 

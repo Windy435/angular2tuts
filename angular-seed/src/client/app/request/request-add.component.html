@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s3"></div>
-  <form class="col s6">
+  <form class="col s6" (ngSubmit)="addRequest(roomNo.value, guestName.value, requestType.value, requestDate.value, requestTime.value, description.value, department.value)">
     <div class="row">
       <div class="input-field col s12">
         <input id="room_no" type="text" class="validate" required #roomNo>
@@ -42,7 +42,7 @@
     </div>
     <div class="input-field pull-right mr">
       <button type="button" class="waves-effect waves-light btn btn-default grey-text" (click)="goBack()">Discard</button>
-      <button type="submit" class="waves-effect waves-light green btn" (click)="addRequest(roomNo, guestName, requestType, requestDate, requestTime)">Submit</button>
+      <button type="submit" class="waves-effect waves-light green btn">Submit</button>
     </div>
   </form>
   <div class="col s3"></div>

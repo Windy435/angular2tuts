@@ -21,10 +21,9 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
-      {src: 'materialize-css/dist/js/materialize.min.js', inject: 'libs'},
+      {src: 'jquery/dist/jquery.min.js', inject: true},
+      {src: 'materialize-css/dist/js/materialize.min.js', inject: true},
       {src: 'materialize-css/dist/css/materialize.min.css', inject: true},
-
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
