@@ -23,7 +23,7 @@ export class RequestListComponent implements OnInit {
   getRequests(): void {
     this.requestService.getRequests()
       .then(requests =>{
-        this.allItems = requests;
+        this.allItems = requests.reverse();
         this.setPage(1);
       });
   }
