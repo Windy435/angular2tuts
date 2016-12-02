@@ -19,10 +19,6 @@ export class RequestAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  goBack(): void {
-    this.router.navigate(['/request'])
-  }
-
   addRequest(roomNo: string,
              guestName: string,
              requestType: string,
@@ -30,8 +26,6 @@ export class RequestAddComponent implements OnInit {
              requestTime: string,
              department: string,
              description: string): void {
-
-    console.log("Click add");
 
     if(!roomNo || !guestName || !requestType ||
         !requestDate || !requestTime || !department || !description){return;}

@@ -13,7 +13,7 @@
     <tr *ngFor="let request of pagedItems">
       <td>{{request.roomNo}}</td>
       <td>{{request.guestName}}</td>
-      <td><span class="request-type">{{request.requestType}}</span> at {{request.requestTime}}</td>
+      <td><span class="blue-text strong">{{request.requestType}}</span> at {{formatDateTime(request.requestTime)}}</td>
       <td>{{request.department}}</td>
       <td>{{request.description}}</td>
     </tr>

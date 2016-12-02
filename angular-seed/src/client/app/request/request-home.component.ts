@@ -7,8 +7,7 @@ import {Router} from "@angular/router";
 @Component({
     moduleId: module.id,
     selector: 'request-home',
-    templateUrl: 'request-home.component.html',
-    styleUrls:['request-home.component.css']
+    templateUrl: 'request-home.component.html'
 })
 export class RequestHomeComponent implements OnInit {
     constructor(private router: Router) { }
